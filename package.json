@@ -1,0 +1,17 @@
+{
+	"name": "fake-astro-loader-root",
+	"version": "0.0.0",
+	"type": "module",
+	"private": true,
+	"workspaces": ["packages/fake-astro-loader", "playground"],
+	"scripts": {
+		"dev": "bun run --cwd playground dev",
+		"biome:ci": "biome ci packages/fake-astro-loader/src",
+		"typecheck": "bun run --cwd packages/fake-astro-loader typecheck",
+		"build": "bun run --cwd packages/fake-astro-loader build",
+		"build:playground": "bun run --cwd playground build"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.9.4"
+	}
+}
