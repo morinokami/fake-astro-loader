@@ -35,7 +35,7 @@ type AnthropicModelId = (typeof AnthropicModelIds)[number];
 export type ModelId = OpenAIModelId | AnthropicModelId;
 
 export function createModel(
-	modelId: AnthropicModelId | OpenAIModelId = "gpt-4o-2024-08-06",
+	modelId: AnthropicModelId | OpenAIModelId = "gpt-4o-mini",
 ): ReturnType<AnthropicProvider | OpenAIProvider> {
 	if (AnthropicModelIds.includes(modelId as AnthropicModelId)) {
 		const anthropic = createAnthropic({});
