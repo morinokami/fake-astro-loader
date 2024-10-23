@@ -1,1 +1,1 @@
-export const hello = "world";
+export { fakeLoader, type FakeLoaderOptions } from "./fake-loader";

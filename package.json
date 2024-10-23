@@ -12,6 +12,10 @@
 		"build:playground": "bun run --cwd playground build"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "1.9.4"
+		"@biomejs/biome": "1.9.4",
+		"@types/node": "22.7.9",
+		"knip": "5.33.3",
+		"pkg-pr-new": "0.0.29",
+		"typescript": "5.6.3"
 	}
 }
