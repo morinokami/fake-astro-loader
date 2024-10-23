@@ -34,7 +34,7 @@ export default defineConfig({
 Now you can define your content collection in `src/content/config.ts`:
 
 ```ts
-import { defineCollection, z } from 'astro:content';
+import { defineCollection, z } from "astro:content";
 import { fakeLoader } from "fake-astro-loader";
 
 const fakeBlog = defineCollection({
