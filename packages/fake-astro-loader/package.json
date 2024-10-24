@@ -1,7 +1,7 @@
 {
 	"name": "fake-astro-loader",
 	"description": "Fake Content Loader for Astro Content Layer",
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"type": "module",
 	"author": "Shinya Fujino <shf0811@gmail.com> (https://github.com/morinokami)",
 	"license": "MIT",
@@ -10,13 +10,18 @@
 		"url": "git+https://github.com/morinokami/fake-astro-loader.git"
 	},
 	"bugs": "https://github.com/morinokami/fake-astro-loader/issues",
-	"keywords": ["astro", "astro-loader"],
+	"keywords": [
+		"astro",
+		"astro-loader"
+	],
 	"exports": {
 		".": "./dist/index.js",
 		"./package.json": "./package.json"
 	},
 	"types": "./dist/index.d.ts",
-	"files": ["dist"],
+	"files": [
+		"dist"
+	],
 	"scripts": {
 		"build": "tsup",
 		"typecheck": "tsc --noEmit"
