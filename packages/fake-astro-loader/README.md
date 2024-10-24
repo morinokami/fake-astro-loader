@@ -12,8 +12,8 @@ npm install fake-astro-loader
 
 fake-astro-loader currently supports the following AI providers for generating data:
 
-- OpenAI
-- Anthropic
+- [OpenAI](https://openai.com/)
+- [Anthropic](https://www.anthropic.com/)
 
 To use fake-astro-loader, obtain an API key from one of these providers. Once you have it, set it as an environment variable, either `OPENAI_API_KEY` or `ANTHROPIC_API_KEY`, using the `export` command. For example:
 
@@ -53,13 +53,15 @@ const fakeBlog = defineCollection({
 export const collections = { fakeBlog };
 ```
 
-There's a demo project in the `playground` directory, so feel free to check it out to see how to use fake-astro-loader.
+If you want to generate HTML content for the collection, add a `rendered` field to your schema and set it to `z.string()`. Then, update the prompt to instruct the model to include HTML content in the field. After that, you can use [the `render` function](https://5-0-0-beta.docs.astro.build/en/guides/content-collections/#rendering-body-content) to display the HTML content on a page.
+
+There's a demo project in [the `playground` directory](https://github.com/morinokami/fake-astro-loader/tree/main/playground), so feel free to check it out to see how to use fake-astro-loader.
 
 ## Options
 
-- schema: A Zod schema that defines the shape of your data.
-- prompt: A prompt that describes what kind of data you want to generate.
-- modelId: A model ID to use for generating the data. Defaults to `gpt-4o-mini`.
+- `schema`: A Zod schema that defines the shape of your data.
+- `prompt`: A prompt that describes what kind of data you want to generate.
+- `modelId`: A model ID to use for generating the data. Defaults to `gpt-4o-mini`.
 
 ## Available Model IDs
 
