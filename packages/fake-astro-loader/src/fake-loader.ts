@@ -1,16 +1,25 @@
 import { generateObject } from "ai";
 import type { Loader } from "astro/loaders";
-import type { ZodSchema } from "astro/zod";
+import type { ZodObject } from "astro/zod";
 import { z } from "astro/zod";
+import stringify from "json-stable-stringify";
+import { zerialize } from "zodex";
 
 import type { ModelId } from "./utils";
 import { createModel } from "./utils";
 
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+type Schema = ZodObject<any>;
+
 export type FakeLoaderOptions = {
-	schema: ZodSchema;
+	schema: Schema;
 	prompt: string;
 	modelId?: ModelId;
 };
+
+function stringifyZodSchema(schema: Schema) {
+	return stringify(zerialize(schema));
+}
 
 export function fakeLoader({
 	schema,
@@ -19,8 +28,15 @@ export function fakeLoader({
 }: FakeLoaderOptions): Loader {
 	return {
 		name: "fake-loader",
-		load: async ({ logger, store }) => {
+		load: async ({ logger, store, generateDigest, meta }) => {
 			logger.info("Generating fake data");
+
+			const digest = generateDigest(stringifyZodSchema(schema));
+			if (digest === meta.get("schemaDigest")) {
+				logger.info("Schema unchanged, skipping generation");
+				return;
+			}
+
 			store.clear();
 
 			const model = createModel(modelId);
@@ -39,6 +55,8 @@ export function fakeLoader({
 					rendered: data.rendered ? { html: data.rendered } : undefined,
 				});
 			}
+
+			meta.set("schemaDigest", digest);
 
 			logger.info(`Generated fake data (total tokens: ${usage.totalTokens})`);
 		},

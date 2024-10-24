@@ -25,10 +25,13 @@
 		"@ai-sdk/anthropic": "0.0.51",
 		"@ai-sdk/openai": "0.0.68",
 		"ai": "3.4.16",
+		"json-stable-stringify": "1.1.1",
+		"zodex": "0.18.2",
 		"zod": "3.23.8"
 	},
 	"devDependencies": {
 		"@types/node": "22.7.7",
+		"@types/json-stable-stringify": "1.0.36",
 		"astro": "5.0.0-beta.5",
 		"tsup": "8.3.0",
 		"typescript": "5.6.3"
